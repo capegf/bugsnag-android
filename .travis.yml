@@ -9,15 +9,11 @@ android:
     - android-23
     - extra-android-m2repository
 
-env:
-  matrix:
-    - ANDROID_TARGET=android-22
-    - ANDROID_ABI=armeabi-v7a
 
 before_script:
   # Create and start emulator
   - jdk_switcher use oraclejdk8
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - adb wait-for-device
   - adb shell input keyevent 82 &
