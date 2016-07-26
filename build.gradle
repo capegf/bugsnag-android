@@ -1,11 +1,15 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
+
     }
 }
 

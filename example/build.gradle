@@ -2,12 +2,30 @@ buildscript {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
     dependencies {
         classpath 'com.bugsnag:bugsnag-android-gradle-plugin:+'
+        classpath 'im.fir:gradle-fir-publisher:1.0.6'
+
+    }
+
+}
+
+allprojects {
+    repositories {
+        maven {
+            url "http://maven.bughd.com/public"
+        }
+        jcenter()
     }
 }
 apply plugin: 'com.android.application'
+apply plugin: 'com.bugsnag.android.gradle'
+apply plugin: 'im.fir.plugin.gradle'
+
 
 android {
     compileSdkVersion 23
@@ -32,6 +50,12 @@ android {
 
 dependencies {
     compile rootProject
+    compile 'im.fir:fir-sdk:latest.integration@aar'
+
 }
 
-apply plugin: 'com.bugsnag.android.gradle'
+fir{
+    apiToken 'bd4c6c41e23e7831dbeea19bc35a9f50'
+    changeLog '测试  第三方撒旦法 你好'
+}
+
