@@ -7,7 +7,6 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.bugsnag:bugsnag-android-gradle-plugin:+'
         classpath 'im.fir:gradle-fir-publisher:1.0.6'
 
     }
@@ -23,7 +22,6 @@ allprojects {
     }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'com.bugsnag.android.gradle'
 apply plugin: 'im.fir.plugin.gradle'
 
 
