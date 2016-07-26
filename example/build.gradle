@@ -30,7 +30,18 @@ apply plugin: 'im.fir.plugin.gradle'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.1'
-
+    signingConfigs {
+//        debug {
+//            storeFile file('debug.keystore')
+//        }
+        release {
+            keyAlias 'fir.im'
+            keyPassword 'fir.im'
+//            storeFile file('/Users/stone/Documents/project_AS/myapplication/stone.keystore')
+            storePassword 'fir.im'
+            storeFile file("FIR.im.jks")
+        }
+    }
     buildTypes {
 
         debug {
@@ -39,13 +50,17 @@ android {
 
         release {
             minifyEnabled true
+            signingConfig signingConfigs.release
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.pro'
         }
+
     }
 
     defaultConfig {
         minSdkVersion 4
     }
+
 }
 
 dependencies {
